@@ -1,0 +1,49 @@
+﻿@model ArrivalDateViewModel
+@{
+    ViewData["Title"] = "Estimated Arrival Date";
+}
+
+@section Scripts {
+    <script src="~/js/arrivalDate.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            arrivalDateReady();
+        });
+    </script>
+}
+
+<div class="mt-3 mb-3">
+    <h3>Query Result</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            Welcome <span id="name-span">@Model.FullName</span>
+        </p>
+    </div>
+    <div class="col-md-6 text-end">
+        <p>
+            Today's date is @DateTime.Now.ToString("MM-dd-yyyy") and the time is @DateTime.Now.ToString("h:mm:ss") @(DateTime.Now.Hour > 11 ? "PM" : "AM")
+        </p>
+    </div>
+</div>
+@if (Model.NumberOfSpaces > 0)
+{
+    <p class="text-danger">
+        @Model.NumberOfSpaces @(Model.NumberOfSpaces == 1 ? "space was" : "spaces were") entered before or after the first or last name fields. This is not allowed!
+    </p>
+}
+<p>
+    Your order should arrive on @Model.EstimatedArrivalDate
+</p>
+<p>
+    <span class="customer-text">If your goods have not arrived yet please check back with us constantly to see when your goods will arrive.</span>
+</p>
+<p>
+    If your goods are arriving today then please ensure that you have someone ready at the delivery location to collect the goods and sign for them.
+</p>
+<p>
+    If your goods have arrived please inspect the package and contents for anything that is missing or damaged. Please also feel free to contact us and let us know how the service and experience was.
+</p>
+
