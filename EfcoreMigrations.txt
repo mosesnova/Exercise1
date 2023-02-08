@@ -1,0 +1,51 @@
+Scaffold-DbContext "Server=.\\SqlExpress;Database=aspnet-SweetSpotGroup-4E73A2E4-9727-40F0-BF91-6E1BC08691BA;Trusted_Connection=True;MultipleActiveResultSets=true
+
+Server=tcp:talent-database.database.windows.net,1433;Initial Catalog=OutSource;Persist Security Info=False;User ID=administrato;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+
+Scaffold-DbContext "Server=.\SqlExpress;Database=aspnet-SweetSpotGroup-4E73A2E4-9727-40F0-BF91-6E1BC08691BA;Trusted_Connection=True;MultipleActiveResultSets=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Tables Talent -Force
+
+PM> Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+PM> Install-Package Microsoft.EntityFrameworkCore.Tools
+
+PM> Scaffold-DbContext "Server=.\SQLExpress;Database=Talent_Database;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+!-------------To be added to Startup.cs------------------!
+ var connection = @"Server=.\SQLEXPRESS;Database=Talent_Database;Trusted_Connection=True;ConnectRetryCount=0";
+ services.AddDbContext<Talent_DatabaseContext>(options => options.UseSqlServer(connection));
+					or
+services.AddDbContext<NPLSurveyV13Context>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContext<ShipDBContext>(options =>
+options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("DefaultConnection")));
+
+!-----------Comment the optionsBuilder in OnConfigure method in Context------------------!
+
+Publish Code to Azure Devops
+
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/publish-to-azure-webapp-using-vs?view=aspnetcore-5.0
+
+https://docs.microsoft.com/en-us/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops
+
+https://stackoverflow.com/questions/41169388/how-do-i-get-the-connection-string-from-the-sqlserverdbcontextoptionsextensions
+
+https://www.c-sharpcorner.com/article/crud-operation-in-asp-net-mvc-using-ajax-and-bootstrap/
+
+
+
+
+Scaffold-DbContext "Server=NAOMI\MSSQLSERVER01;Database=NPLRecruitmentV1;Trusted_Connection=True;MultipleActiveResultSets=true" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force
+
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=DatabaseName;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DirectoryNameOfYourModels -Tables employee -f
+
+
+
+https://nplrecruitment.azurewebsites.net/
+
+https://www.c-sharpcorner.com/article/adding-role-authorization-to-a-asp-net-mvc-core-application/
+
+
+
